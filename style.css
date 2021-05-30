@@ -193,15 +193,18 @@ body {
 }
 
 .result-h3 {
+    text-align: center;
     text-transform: uppercase;
     color: #fff;
     margin: 6rem 0;
 }
 
 .choice {
+    width: 120px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
 
 }
 
