@@ -1,0 +1,391 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+svg {
+    pointer-events: none;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    width: 800px;
+    max-width: 50%;
+    border: 2px solid hsl(217, 16%, 45%);
+    margin: 2rem 0;
+    color: #fff;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+.score {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 20px;
+    background-color: rgb(230, 230, 230);
+    text-align: center;
+}
+
+.score__h3 {
+    font-size: .9rem;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    color: hsl(229, 64%, 46%);
+}
+
+.score__number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: hsl(229, 25%, 31%);
+}
+
+.choose-container {
+    display: none;
+    position: relative;
+    margin-top: 8rem;
+}
+
+.choose-container.active {
+    display: block;
+}
+
+.option {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    background-color: rgb(218, 218, 218);
+    border: 15px solid transparent;
+    transition: .2s;
+}
+
+.option:active {
+    transform: scale(.9);
+}
+
+.rock {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -15%;
+    border-color: hsl(349, 70%, 56%);
+}
+
+.rock:active {
+    transform: translateX(-50%) scale(.9);
+}
+
+.paper {
+    position: absolute;
+    left: -15%;
+    top: -15%;
+    border-color: hsl(230, 89%, 65%);
+}
+
+.scissors {
+    position: absolute;
+    right: -15%;
+    top: -15%;
+    border-color: hsl(40, 84%, 53%);
+}
+
+.rules__btn {
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    bottom: 15px;
+    right: 15px;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 1px solid #fff;
+    text-transform: uppercase;
+    color: #fff;
+    cursor: pointer;
+}
+
+.rules-c {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s;
+}
+
+.rules-c.active {
+    opacity: 1;
+    pointer-events: all;
+    z-index: 100000;
+}
+
+.rules-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 400px;
+    max-width: 100%;
+    border-radius: 15px;
+    background-color: #fff;
+}
+
+.rules-top {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 2rem;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.rules-h3 {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    color: hsl(229, 25%, 31%);
+}
+
+.rules-close {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.rules {
+    margin-top: 4rem;
+}
+
+.result-container {
+    position: relative;
+    width: 1000px;
+    max-width: 100%;
+    display: none;
+    justify-content: space-around;
+}
+
+.result-container.active {
+    display: flex;
+}
+
+.result-h3 {
+    text-transform: uppercase;
+    color: #fff;
+    margin: 6rem 0;
+}
+
+.choice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.result-circle {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background-color: rgb(218, 218, 218);
+    border-radius: 50%;
+}
+
+.big {
+    transform: scale(2);
+}
+
+.computer-option {
+    background-color: hsl(214, 47%, 23%);
+    border: 20px solid transparent;
+    transition: .3s;
+}
+
+.computer-option.slide {
+    transform: translateX(100px);
+}
+
+.user-option {
+    transition: .3s;
+}
+
+.user-option.slide {
+    transform: translateX(-100px);
+}
+
+.result {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    flex: 1;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.result.active {
+    display: flex;
+}
+
+.result-text {
+    text-align: center;
+    color: #fff;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.result-button {
+    background-color: #fff;
+    border: none;
+    width: 100%;
+    padding: 1.3rem 2.5rem;
+    border-radius: 5px;
+    margin-top: 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.winner {
+    box-shadow: 0 0 0px 25px #2C3B5A,
+        0 0 0px 50px #293857,
+        0 0 0px 75px #233455;
+}
+
+@media (max-width: 800px) {
+    .h1 {
+        font-size: 1.6rem;
+    }
+
+    .score {
+        width: 80px;
+        height: 80px;
+    }
+
+    .score__h3 {
+        font-size: .7rem;
+    }
+
+    .score__number {
+        font-size: 2rem;
+    }
+     .result-circle {
+         width: 100px;
+         height: 100px;
+     }
+
+     .big {
+         transform: scale(.6);
+     }
+
+     .result-text {
+         font-size: 1rem;
+     }
+
+     .result-button {
+         margin-top: 1rem;
+         width: 100px;
+         font-size: .8rem;
+         padding: .3rem .4rem;
+     }
+
+     .user-option.slide {
+         transform: translateX(-10px);
+     }
+
+     .computer-option.slide {
+         transform: translateX(10px);
+     }
+
+     .result-h3 {
+         font-size: 1rem;
+     }
+
+     .result {
+         top: 60%;
+     }
+
+     .result-container {
+         width: 90%;
+     }
+
+     .hand {
+         transform: scale(.6);
+     }
+
+     .winner {
+         box-shadow: 0 0 0px 15px #2C3B5A,
+             0 0 0px 30px #293857,
+             0 0 0px 45px #233455;
+     }
+}
+
+@media (max-width: 500px) {
+    .h1 {
+        font-size: 1rem;
+    }
+
+    .score {
+        width: 60px;
+        height: 60px;
+        padding: .4rem;
+    }
+
+    .score__h3 {
+        font-size: .5rem;
+    }
+
+    .score__number {
+        font-size: 1.8rem;
+    }
+
+    .option {
+        width: 100px;
+        height: 100px;
+    }
+
+    .triangle {
+        transform: scale(.8);
+    }
+
+    .paper {
+        left: -5%;
+        top: -5%;
+    }
+
+    .scissors {
+        right: -5%;
+        top: -5%;
+    }
+
+    .rock {
+        bottom: -5%;
+    }
+
+   
+}
